@@ -5,7 +5,7 @@ import axios from 'axios';
 
 jest.mock('axios');
 
-describe('Eventos Component', () => {
+describe('Componente de Eventos', () => {
   beforeEach(() => {
     axios.get.mockResolvedValue({
       data: [
@@ -25,14 +25,14 @@ describe('Eventos Component', () => {
     });
   });
 
-  it('renders without crashing', () => {
+  it('renderiza sem falhas', () => {
     render(<Eventos />);
   });
 
-  it('fetches and displays eventos', async () => {
+  it('busca e exibe eventos', async () => {
     render(<Eventos />);
 
-    // Wait for the API call to complete
+    // Aguarde a conclusão da chamada à API
     await waitFor(() => {
       expect(screen.getByText('Evento 1')).toBeInTheDocument();
       // eslint-disable-next-line testing-library/no-wait-for-multiple-assertions
@@ -40,21 +40,18 @@ describe('Eventos Component', () => {
     });
   });
 
-  it('opens and closes the adicionar evento modal', () => {
+  it('abre e fecha o modal de adicionar evento', () => {
     render(<Eventos />);
     
-    // Open modal
+
     fireEvent.click(screen.getByText('Adicionar Novo Item'));
     
-    // Check if modal is open
     expect(screen.getByText('Adicionar Evento')).toBeInTheDocument();
     
-    // Close modal
+
     fireEvent.click(screen.getByText('Fechar'));
     
-    // Check if modal is closed
     expect(screen.queryByText('Adicionar Evento')).toBeNull();
   });
 
-  // Add more tests for other functionalities as needed
 });
