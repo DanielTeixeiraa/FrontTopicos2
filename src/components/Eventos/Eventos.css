@@ -1,0 +1,11 @@
+.eventos {
+    padding: 120px 20px 50px;
+    position: relative; /* Para posicionar o botão corretamente */
+  }
+  
+  .add-button {
+    position: absolute;
+    bottom: 10px; /* Define a distância do botão até a parte inferior */
+    right: 10px; /* Define a distância do botão até a direita */
+  }
+  
